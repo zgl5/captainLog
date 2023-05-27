@@ -76,18 +76,19 @@ app.put('/logs/:id', (req, res)=>{
 
 // Create : Make a new thing with this filled out form 
 //POST 
-app.post('/logs', (req, res)=>{
+app.post('/logs', async (req, res)=>{
     if(req.body.shipIsBroken === 'on'){ //if checked, req.body.shipIsBroken is set to 'on'
         req.body.shipIsBroken = true 
     } else { 
         req.body.shipIsBroken = false 
     }
    
-    Log.create(req.body, (error, createdLog)=>{
-        res.send(createdLog)
+    await Log.create(req.body, (error, createdLog)=>{
+        //res.send(createdLog)
+        res.redirect('/logs'); 
     });
     
-    res.redirect('/logs'); //send the user back to /logs
+    //res.redirect('/logs'); //send the user back to /logs
 })
 
 
@@ -163,18 +164,19 @@ app.put('/foodlogs/:id', (req, res)=>{
 
 // Create : Make a new thing with this filled out form 
 //POST 
-app.post('/foodlogs', (req, res)=>{
+app.post('/foodlogs', async (req, res)=>{
     if(req.body.haveFood === 'on'){ 
         req.body.haveFood = true 
     } else { 
         req.body.haveFood = false 
     }
    
-    Food.create(req.body, (error, createdFood)=>{
-        res.send(createdFood)
+    await Food.create(req.body, (error, createdFood)=>{
+        //res.send(createdFood)
+        res.redirect('/foodlogs');
     });
     
-    res.redirect('/foodlogs'); //send the user back to /foodlogs
+    //res.redirect('/foodlogs'); //send the user back to /foodlogs
 })
 
 // Edit : A prefilled form to update a specific thing 

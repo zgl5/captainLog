@@ -8,6 +8,7 @@ class Index extends React.Component {
     const timestamp = new Date(logs.createdAt).toLocaleString(); // Get the timestamp from the log's createdAt field
     return (
     <div style={{backgroundColor:'lightyellow', color:'blue' }}>
+      <nav> <a href="/"><strong>Back to Main</strong></a></nav>
       <DefaultLayout title={"Logs Index Page"}>
       
         <nav>
